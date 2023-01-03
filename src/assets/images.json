@@ -1,0 +1,11 @@
+{
+  "routes": {
+    "home": "https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Ficons%2Fhome-summer-96.png?alt=media&token=68f30549-28b7-4e57-a407-449914c798d0",
+    "post": "https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Ficons%2Fread-66.png?alt=media&token=2f70c5a0-c55d-43c8-a979-acfd8a745a0c"
+  },
+  "icons": {
+    "left-arrow": "https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Ficons%2Fleft-96.png?alt=media&token=4cbb64d5-b6ba-4cf1-a018-0197fd6ae449",
+    "expand": "https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Ficons%2Ficons8-maximize-window-96.png?alt=media&token=8edbf309-2bd4-4f83-9721-923a6da7dc57",
+    "collapse": "https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Ficons%2Ficons8-minimize-window-96.png?alt=media&token=1f99428a-90a7-4074-a9ed-629e23143080"
+  }
+}

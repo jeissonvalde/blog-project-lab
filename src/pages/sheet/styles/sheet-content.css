@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500&display=swap');
+
+.sheet-content {
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sheet-content article {
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.566);
+  max-width: 500px;
+  margin: auto;
+  padding: 10px;
+  text-align: justify;
+  max-height: 500px;
+  height: 100%;
+  margin-bottom: 100px;
+  overflow-y: auto;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+
+  /* Animations */
+  will-change: color;
+  transition: color 1s, opacity 1s, max-height .4s;
+  transition-delay: 4.8s, 4s, 0s;
+  color: transparent;
+  opacity: 0
+}
+
+.sheet-content article.minimize {
+  max-height: 40px;
+  /* opacity: .2 !important; */
+  margin-left: auto;
+  right: 0px;
+}
+
+#button-minimize-content {
+  /* width: 40px;
+  z-index: 4; */
+}
+
+.article-options {
+  display: flex;
+  width: 100%;
+  max-width: 480px;
+  justify-content: flex-end;
+  bottom: -40px;
+  margin: auto;
+  /* background-color: red; */
+  position: relative;
+  z-index: 4;
+}
+
+#button-maximize-content {
+  display: none;
+}
+
+#button-minimize-content {
+  display: flex;
+}
+
+#button-minimize-content,
+#button-maximize-content {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  margin: 4px;
+  box-shadow: 0px 0px 6px gray;
+}
+
+#button-minimize-content img,
+#button-maximize-content img {
+  width: 40px;
+}
