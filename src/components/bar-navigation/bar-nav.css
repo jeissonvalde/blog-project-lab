@@ -21,6 +21,7 @@
   background-color: rgb(92, 164, 253);
   margin: 2px;
   cursor: pointer;
+  padding: 12px;
 }
 
 .bar-navigation ul li img {

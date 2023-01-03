@@ -22,6 +22,12 @@ function setEvent (params: any) {
   setTimeout(handler.bind(null, 3000), 3000)
 }
 
+declare global {
+  interface Window {
+    events: any,
+  }
+}
+
 // For just one time, for react components.
 class GlobalEvent {
   events: any
@@ -30,14 +36,17 @@ class GlobalEvent {
     this.events = {}
   }
 
-  setEventGlobal = (params: { id: string, handler: any }) => {
+  setEventGlobal = (params: { id: string, handler: any, noKillId: boolean }) => {
     if (!params.id) return alert('Se necesita un id en setEventGlobal')
     if (!params.handler) return alert('Se necesita un handler en setEventGlobal')
+    if (!window.events) window.events = {}
   
   
-    if (!this.events[params.id]) {
+    if (!window.events[params.id]) {
       params.handler()
-      this.events[params.id] = new Date()
+      
+      window.events[params.id] = new Date()
+      console.log('Se inició un evento global', )
     }
   }
 }

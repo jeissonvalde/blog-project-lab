@@ -2,6 +2,7 @@ export default [
   {
     title: 'La Vuelta San Juan 2023',
     url: 'vuelta-san-juan-2023',
+    id: 'A9S8AJAS0IAM-AS98AS',
     content: `
       <h2>Vuelta San Juan 2023</h2>
       <p>
@@ -91,6 +92,7 @@ export default [
   {
     title: 'Titulo 2',
     url: 'vuelta-san-juan-2024',
+    id: 'AISOA3KASDAM-AXCX9U',
     content: `
       <h2>Titulo 2</h2>
     `,

@@ -9,8 +9,14 @@
 #home-headline-list {
   list-style: none;
   width: 240px;
-  position: relative;
+  position: absolute;
   padding: 0;
+}
+
+#home-headline-list ul {
+  min-height: 65px;
+  max-width: 100px;
+  position: relative;
 }
 
 #home-headline-list li {
@@ -43,8 +49,53 @@
   left: 0;
   z-index: 0;
 
-  
   /* Animations */
   will-change: transform;
   transition: transform 1s;
+}
+
+.pub-preview {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.pub-preview .article-image.pointer {
+  display: flex;
+}
+
+.pub-preview .article-image {
+  height: 600px;
+  background-color: orange;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  display: none;
+  justify-content: center;
+}
+
+.pub-preview .article-image img {
+  height: 100%;
+}
+
+.bring-the-picture-here {
+  transform-origin: right;
+  transform: translate(120%, 0px) rotate3d(1, 6, 0, 75deg);
+  transition: transform 6s cubic-bezier(0.51,-0.01, 0.06, 1.04);
+  perspective: 120000px;
+  /* animation: bringHere 3s linear forwards; */
+}
+
+.take-away-photography {}
+
+.pub-preview .article-image .article-image-effect {}
+
+/* Animations */
+@keyframes bringHere {
+  0% {
+    transform: translate();
+  }
+  100% {
+    transform: translate();
+  }
 }
