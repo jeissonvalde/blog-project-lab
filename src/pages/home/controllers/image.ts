@@ -1,5 +1,5 @@
 
-export function removeBackground (imageSRC: string) {
+export const removeBackground = (imageSRC: string) => {
   let canvas = document.getElementById('canvas') as HTMLCanvasElement,
     ctx = canvas.getContext('2d') as CanvasRenderingContext2D
 
@@ -25,4 +25,10 @@ export function removeBackground (imageSRC: string) {
     }
   }
   img.src = imageSRC
+}
+
+export const loadImage = (prevId: string, e: any) => {
+
+  document.getElementById(prevId)
+    ?.classList.remove('loading')
 }

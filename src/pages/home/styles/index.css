@@ -11,6 +11,7 @@
   width: 240px;
   position: absolute;
   padding: 0;
+  z-index: 5;
 }
 
 #home-headline-list ul {
@@ -58,6 +59,29 @@
   height: 100vh;
   overflow: hidden;
   display: flex;
+  position: relative;
+}
+
+.pub-preview-images {
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.external-link {
+  background-color: white;
+  padding: 2px;
+  position: absolute;
+  right: 10px;
+  z-index: 4;
+  /* animation: animAuthorLink 10s linear forwards; */
+}
+
+.external-link img {
+  width: 20px;
+  height: 20px;
 }
 
 .pub-preview .article-image.pointer {
@@ -66,36 +90,174 @@
 
 .pub-preview .article-image {
   height: 600px;
-  background-color: orange;
   max-width: 600px;
   margin: auto;
   overflow: hidden;
-  display: none;
   justify-content: center;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  
+  /* Animations */
+  transform-origin: right;
+  transform: translate(0px, 140%) rotate3d(1, 6, 0, 75deg);
+  perspective: 120000px;
 }
+
+/* Start article-image-effect */
+.article-image-effect {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+
+  /* Animations */
+  background-size: 300%;
+  will-change: background-color, animation;
+  transition: background-color 1s ease-out;
+  background: transparent;
+}
+
+/*
+.pub-preview .article-image.loading .article-image-effect {
+  background: rgb(53, 53, 53);
+  background: linear-gradient(
+    90deg, rgb(53, 53, 53) 
+    0%, rgb(84, 84, 84) 
+    35%, rgb(68, 68, 68) 100%);
+  animation: bgLoading 2s infinite;
+} */
+
+.article-image-effect .pub-preview-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.article-image-effect .pub-preview-intro span {
+  display: inline;
+  background-color: #f2ca00;
+  margin-bottom: 4px;
+  padding: 10px;
+  line-height: 22px;
+  font-size: 22px;
+
+  /* Animations */
+  will-change: transform, color;
+  animation-timing-function: cubic-bezier(0.51,-0.01, 0.06, 1.04);
+  transform: translateX(-120%);
+  color: #f2ca00;
+  animation-name: pubPreviewIntroText;
+  animation-duration: 10s;
+  animation-delay: calc(var(--jdx) * 2.5s);
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+.bring-the-picture-here .article-image-effect .pub-preview-intro span {
+  animation-play-state: running;
+}
+
+.take-away-photography .article-image-effect .pub-preview-intro span {
+  animation-play-state: running;
+}
+
+.paragraph-line {
+  display: flex;
+}
+
+.article-image-effect .pub-preview-intro .img-statistics {
+  padding: 4px 4px 2px;
+  background-color: rgb(243, 243, 243);
+  margin: 15px auto 15px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-image-effect .pub-preview-intro .img-statistics img {
+  width: 50px;
+  height: 50px;
+}
+/* End article-image-effect */
 
 .pub-preview .article-image img {
   height: 100%;
+  position: relative;
+  top: 0px;
+  z-index: 2;
 }
 
 .bring-the-picture-here {
-  transform-origin: right;
-  transform: translate(120%, 0px) rotate3d(1, 6, 0, 75deg);
-  transition: transform 6s cubic-bezier(0.51,-0.01, 0.06, 1.04);
-  perspective: 120000px;
-  /* animation: bringHere 3s linear forwards; */
+  animation: bringHere 6.4s cubic-bezier(0.51,-0.01, 0.06, 1.04) forwards;
+  z-index: 2;
 }
 
-.take-away-photography {}
-
-.pub-preview .article-image .article-image-effect {}
+.take-away-photography {
+  animation: takeaway 6.4s cubic-bezier(0.51,-0.01, 0.06, 1.04) forwards;
+  z-index: 1;
+}
 
 /* Animations */
 @keyframes bringHere {
   0% {
-    transform: translate();
+    transform: translate(0px, 140%) rotate3d(1, 6, 0, 75deg);
   }
   100% {
-    transform: translate();
+    transform: translate(0px, 0%) rotate3d(0, 0, 0, 0deg);
+  }
+}
+
+@keyframes takeaway {
+  0% {
+    transform: translate(0px, 0%) rotate3d(0, 0, 0, 0deg);
+  }
+  100% {
+    transform: translate(0px, -160%) rotate3d(8, 2, 1, 75deg);
+  }
+}
+
+@keyframes animAuthorLink {
+  0% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 0;
+  }
+  16% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bgLoading {
+  0% {
+    background-position: -10%;
+  }
+  0% {
+    background-position: 60%;
+  }
+}
+
+@keyframes pubPreviewIntroText {
+  20% {
+    transform: translateX(0%);
+    color: #f2ca00;
+  }
+  28% {
+    transform: translateX(0%);
+    color: rgb(30, 30, 30);
+  }
+  to {
+    transform: translateX(0%);
+    color: rgb(30, 30, 30);
   }
 }

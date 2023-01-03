@@ -40,10 +40,10 @@
   color: #888;
 }
 
-.Home.page {
-  display: block !important;
+.page {
+  display: block;
 }
 
-.page {
-  display: none;
+.page.hide {
+  display: none !important;
 }

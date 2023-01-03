@@ -3,6 +3,21 @@ export default [
     title: 'La Vuelta San Juan 2023',
     url: 'vuelta-san-juan-2023',
     id: 'A9S8AJAS0IAM-AS98AS',
+    introduction: [
+      'La competencia de ciclismo se ha convertido ',
+      'en uno de los deportes más emocionantes ',
+      'en latinoamérica'
+    ],
+    messages: [
+      {
+        // Para cookies [recomendaciones]
+        text: '¿Verá el campeonato de ciclismo en su hogar o se encontrará de vacaciones?',
+        pront: [
+          { label: 'En el hogar', data: 'home, movies, ' },
+          { label: 'Estoy de vacaciones', data: 'home' },
+        ]
+      },
+    ],
     content: `
       <h2>Vuelta San Juan 2023</h2>
       <p>
@@ -73,14 +88,25 @@ export default [
       </ul>
     `,
     bgImage: 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Fblog%2F01%20vuelta%20san%20juan%2Fvuelta%20san%20juan%20(2).png?alt=media&token=3928fdfd-b1ce-40d8-b158-d50bd0d5e735',
+    bgImageAuthor: '',
+    alt: 'vuelta san juan 2023',
     meta: [ {} ],
     createdAt: new Date(),
     className: 'pointer',
     images: [
       {
-        src: '',
-        transform: '',
-        transformInitial: '',
+        src: 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Fblog%2F01%20vuelta%20san%20juan%2Fvuelta%20san%20juan%20(11).png?alt=media&token=9fac903a-3116-4666-a2a1-6fedf79bdf31',
+        // transform: '',
+        // transformInitial: '',
+      },
+      {
+        src: 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Fblog%2F01%20vuelta%20san%20juan%2Fvuelta%20san%20juan%20(3).png?alt=media&token=30c278f3-9788-40a4-9ad9-046eee25c39c',
+      },
+      {
+        src: 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Fblog%2F01%20vuelta%20san%20juan%2Fvuelta%20san%20juan%20(7).png?alt=media&token=4de8f53d-ae45-4f7e-94da-8302495de736',
+      },
+      {
+        src: 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Fblog%2F01%20vuelta%20san%20juan%2Fvuelta%20san%20juan.png?alt=media&token=814441d0-d98c-4b09-aa7f-a566aa22d239',
       },
     ],
     createdBy: {
@@ -93,18 +119,27 @@ export default [
     title: 'Titulo 2',
     url: 'vuelta-san-juan-2024',
     id: 'AISOA3KASDAM-AXCX9U',
+    messages: [
+      {
+        // Para cookies [recomendaciones]
+        text: '',
+        pront: [
+          { label: '', data: '' },
+        ]
+      },
+    ],
     content: `
       <h2>Titulo 2</h2>
     `,
-    bgImage: 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Fblog%2F01%20vuelta%20san%20juan%2Fvuelta%20san%20juan%20(2).png?alt=media&token=3928fdfd-b1ce-40d8-b158-d50bd0d5e735',
+    bgImage: 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Fblog%2F01%20vuelta%20san%20juan%2Fvuelta%20san%20juan%20(11).png?alt=media&token=9fac903a-3116-4666-a2a1-6fedf79bdf31',
+    bgImageAuthor: '',
     meta: [ {} ],
+    alt: 'vuelta san juan 2023',
     createdAt: new Date(),
     className: '',
     images: [
       {
         src: '',
-        transform: '',
-        transformInitial: '',
       },
     ],
     createdBy: {
