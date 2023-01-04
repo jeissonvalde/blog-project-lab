@@ -1,12 +1,16 @@
 // Dependencies
 import React from 'react'
+import { PreviewIntro } from './components/preview-intro'
 import blogs from '../../assets/blogs'
 import setEvent from '../../shared/controllers/set-event.js'
 import {
-  BlogsInterval
+  presentation,
+  stopPresentation,
+  selectLi,
 } from './controllers/animations'
 import {
-  clickLiArticle
+  clickLiArticle,
+  clickArticlePreview
 } from './controllers/events'
 import {
   loadImage
@@ -19,9 +23,25 @@ let imgLinkBlank = 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d
 
 // Page container
 class Home extends React.Component {
+  constructor(props: any) {
+    super(props)
+
+    this.state = {
+      handleRemoveInterval: null,
+      articlePointer: null,
+      mainInterval: null
+    }
+  }
+
+  // Handlers
+  initPresentation = presentation.bind(this)
+  stopPresentation = stopPresentation.bind(this)
+  selectLi = selectLi.bind(this)
+  selectPreview = selectLi.bind(this)
+  // articleIntroElem = articleIntroElem.bind(this)
+
   render() {
-    let blogsInterval = new BlogsInterval()
-    globalEvents.setEventGlobal({ id: 'home-headline-list-event', handler: blogsInterval.presentation, noKillId: true })
+    globalEvents.setEventGlobal({ id: 'home-headline-list-event', handler: this.initPresentation, noKillId: true })
 
     return (
       <section className="Home page">
@@ -30,12 +50,6 @@ class Home extends React.Component {
         <ul id="home-headline-list">
           {blogs.map((blg, idx) => {
             let liId = blg.id
-            setTimeout(() => {
-              let liArticleElem = document.getElementById(liId) as HTMLLIElement
-              liArticleElem
-                ? liArticleElem.onclick = clickLiArticle.bind(null, blg)
-                : null
-            }, 1000)
 
             return (
               <li
@@ -43,6 +57,7 @@ class Home extends React.Component {
                 data-url={blg.url}
                 data-blg-id={blg.id}
                 id={liId}
+                onClick={this.selectLi.bind(null, liId)}
                 className={blg.className}>
 
                 {blg.title}
@@ -56,22 +71,20 @@ class Home extends React.Component {
         {/* Articles preview */}
         <div className="pub-preview">
           <div className="pub-preview-images">
-            {blogs.map((blg, idx) => {
+            {blogs.map((blg: any, idx: number) => {
               let prevId = 'img-preview-' + blg.id
-              setTimeout(() => {
-                let prevImageElem = document.getElementById(prevId) as HTMLLIElement
-                prevImageElem
-                  ? prevImageElem.onclick = clickLiArticle.bind(null, blg)
-                  : null
-              }, 1000)
 
               return (
                 <div
                   key={idx}
                   id={prevId}
+                  onClick={this.selectPreview.bind(null, blg)}
                   className={`article-image ${idx == 0 ? 'bring-the-picture-here' : ''}`}>
 
-                  <div className="article-image-effect"></div>
+                  <div className="article-image-effect">
+                    <PreviewIntro blg={blg} />
+                  </div>
+
                   <a className="author external-link" target="_blank" href={blg.bgImageAuthor}>Autor <img src={imgLinkBlank} /></a>
                   <img
                     onLoad={loadImage.bind(null, prevId)}

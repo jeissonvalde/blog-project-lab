@@ -16,7 +16,7 @@ export const removeBackground = (imageSRC: string) => {
       pixel.g = data[idx + 1]
       pixel.b = data[idx + 2]
       pixel.a = data[idx + 3]
-      
+
       // if (pixel.r == 255 && pixel.g == 255 && pixel.b == 255)
       // Them pixel.a = 0
 

@@ -1,112 +1,103 @@
 import blogsData from "../../../assets/blogs"
+import React, { useState, Component } from 'react'
 let imgStatistics = 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Ficons%2Fstatistics-64.png?alt=media&token=a861ab54-98cb-400b-bcec-2ab8a74a58c5'
 
+export function presentation (this: any, blogList: []) {
+  // let This = this as any
+  setTimeout(() => {
 
-export class BlogsInterval {
-  headlineListInterv: any
+    let interv = setInterval(() => {
+      console.log('interv')
+      let headlineListElem = document.getElementById('home-headline-list')
 
-  presentation = (blogList: []) => {
-    setTimeout(() => {
-
-      let intev = setInterval(() => {
-        let headlineListElem = document.getElementById('home-headline-list')
-  
-        if (headlineListElem) {
-          let headlineItems = headlineListElem.getElementsByTagName('li') as HTMLCollectionOf<HTMLElement>,
-            pointer = null,
-            next = headlineItems[1] && !headlineItems[1].classList.contains('marker') ? headlineItems[1] : null,
-            markerElem = headlineListElem.querySelector('li.marker') as any
+      if (headlineListElem) {
+        let headlineItems = headlineListElem.getElementsByTagName('li') as HTMLCollectionOf<HTMLElement>,
+          pointer = null,
+          next = headlineItems[1] && !headlineItems[1].classList.contains('marker') ? headlineItems[1] : null,
+          markerElem = headlineListElem.querySelector('li.marker') as any
 
 
-          // Start search pointer
-          for (let idx = 0; idx < headlineItems.length; idx++) {
-            const hlitem = headlineItems[idx]
-            if (hlitem.classList.contains('pointer')) {
-              pointer = hlitem
-              next = headlineItems[idx + 1] && !headlineItems[idx + 1].classList.contains('marker')
-                ? headlineItems[idx + 1]
-                : headlineItems[0]
-            }
-          } // End search pointer (for).
-
-
-          if (next && markerElem) {
-            // Take away
-            pointer?.classList.remove('pointer')
-            let imgPointer = document.getElementById('img-preview-' + pointer?.getAttribute('id'))
-            imgPointer?.classList.remove('bring-the-picture-here')
-            imgPointer?.classList.add('take-away-photography')
-
-            // Bring here
-            next?.classList.add('pointer')
-            let prevId = 'img-preview-' + next?.getAttribute('id')
-            let imgNext = document.getElementById(prevId) as HTMLElement
-            imgNext?.classList.add('bring-the-picture-here')
-            
-            markerElem.style.transform = `translate(0px, ${next.offsetTop}px)`
-            setTimeout(() => imgPointer?.classList.remove('take-away-photography'), 7000)
-
-            // Introduction
-            let artImgEffectElem = imgNext.querySelector('.article-image-effect') as HTMLElement
-
-            if (artImgEffectElem) {
-              artImgEffectElem.innerHTML = activeMessages(next?.getAttribute('id'))
-
-              setTimeout(() => artImgEffectElem.innerHTML = '', 20000)
-            }
+        // Start search pointer
+        for (let idx = 0; idx < headlineItems.length; idx++) {
+          const hlitem = headlineItems[idx]
+          if (hlitem.classList.contains('pointer')) {
+            pointer = hlitem
+            next = headlineItems[idx + 1] && !headlineItems[idx + 1].classList.contains('marker')
+              ? headlineItems[idx + 1]
+              : headlineItems[0]
           }
-        } else { console.log('No está la lista de titulares.') }
-      }, 15000) // End interval
-      this.headlineListInterv = intev
-  
-    }, 2000)
+        } // End search pointer (for).
+
+
+        if (next && markerElem) {
+          // Take away
+          pointer?.classList.remove('pointer')
+          let imgPointer = document.getElementById('img-preview-' + pointer?.getAttribute('id'))
+          imgPointer?.classList.remove('bring-the-picture-here')
+          imgPointer?.classList.add('take-away-photography')
+
+          // Bring here
+          next?.classList.add('pointer')
+          let prevId = 'img-preview-' + next?.getAttribute('id')
+          let imgNext = document.getElementById(prevId) as HTMLElement
+          imgNext?.classList.add('bring-the-picture-here')
+
+          markerElem.style.transform = `translate(0px, ${next.offsetTop}px)`
+          setTimeout(() => imgPointer?.classList.remove('take-away-photography'), 7000)
+        }
+      } else { console.log('No está la lista de titulares.') }
+    }, 8000) as any // End interval
+    
+    this.setState({
+      mainInterval: interv
+    })
+  }, 1000)
+}
+
+// opt: { callback }
+export function stopPresentation (this: any, opts: any) {
+  clearInterval(this.state.mainInterval)
+
+  let headlineListElem = document.getElementById('home-headline-list'),
+    headlineItems = headlineListElem?.getElementsByTagName('li') as HTMLCollectionOf<HTMLElement>,
+    pubPreviewImagesElem = document.querySelector('.pub-preview-images'),
+    articleImageElems = pubPreviewImagesElem?.getElementsByClassName('article-image') as HTMLCollectionOf<HTMLElement>
+
+  // Start clean pointers
+  for (let idx = 0; idx < headlineItems.length; idx++) {
+    headlineItems[idx].classList.remove('pointer')
   }
-}
 
-interface BlogInterface {
-  title: string,
-  url: string,
-  id: string,
-  introduction: any[],
-  messages: any[],
-  content: string,
-  bgImage: string,
-  bgImageAuthor: string,
-  alt: string,
-  meta: {}[],
-  createdAt: string,
-  className: string,
-  images: [],
-  createdBy: {}
-}
+  for (let jdx = 0; jdx < articleImageElems.length; jdx++) {
+    if (articleImageElems[jdx].classList.contains('bring-the-picture-here')) {
+      articleImageElems[jdx].classList.remove('bring-the-picture-here')
+      articleImageElems[jdx].classList.add('take-away-photography')
 
-function activeMessages (id: any) {
-  let blg: any
+      setTimeout(() => {
+        articleImageElems[jdx].classList.remove('take-away-photography')
+      }, 7000)
+      continue
+    }
 
-  for (let idx = 0; idx < blogsData.length; idx++) {
-    const currentBlg = blogsData[idx];
-    if (currentBlg.id == id) blg = currentBlg
+    articleImageElems[jdx].classList.remove('bring-the-picture-here')
+    articleImageElems[jdx].classList.remove('take-away-photography')
   }
-
-  if (!blg?.introduction) return ''
-  
-  return `
-    <div class="pub-preview-intro">
-      <div class="img-statistics">
-        <img src="${imgStatistics}" /> Estadísticas
-      </div>
-      ${blg?.introduction.map((intr: string, jdx: number) => {
-
-        return `
-          <div class="paragraph-line">
-            <span style="--jdx: ${jdx}">${intr}</span>
-          </div>
-          `
-      }).join("")}
-    <div>
-  `
+  // End clean pointers (for).
 }
 
-function clickRespose (e: any) {
+export function selectLi (this: any, idBlg: string) {
+  let markerElem = document.querySelector('#home-headline-list li.marker') as any,
+    liElem = document.getElementById(idBlg) as HTMLElement
+    
+
+  this.stopPresentation()
+  markerElem.style.transform = `translate(0px, ${liElem.offsetTop}px)`
+  liElem?.classList.add('pointer')
+  setTimeout(() => {
+    document.getElementById('img-preview-' + idBlg)?.classList.add('bring-the-picture-here')
+  }, 400)
+}
+
+export function clickRespose (e: any) {
   
 }

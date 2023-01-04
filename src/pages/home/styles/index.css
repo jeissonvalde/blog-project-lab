@@ -121,16 +121,6 @@
   background: transparent;
 }
 
-/*
-.pub-preview .article-image.loading .article-image-effect {
-  background: rgb(53, 53, 53);
-  background: linear-gradient(
-    90deg, rgb(53, 53, 53) 
-    0%, rgb(84, 84, 84) 
-    35%, rgb(68, 68, 68) 100%);
-  animation: bgLoading 2s infinite;
-} */
-
 .article-image-effect .pub-preview-intro {
   display: flex;
   flex-direction: column;
@@ -176,11 +166,12 @@
   margin: 15px auto 15px 15px;
   display: flex;
   flex-direction: column;
+  font-size: 12px;
 }
 
 .article-image-effect .pub-preview-intro .img-statistics img {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
 }
 /* End article-image-effect */
 
@@ -191,6 +182,7 @@
   z-index: 2;
 }
 
+/* Article preview transitions */
 .bring-the-picture-here {
   animation: bringHere 6.4s cubic-bezier(0.51,-0.01, 0.06, 1.04) forwards;
   z-index: 2;
@@ -199,6 +191,75 @@
 .take-away-photography {
   animation: takeaway 6.4s cubic-bezier(0.51,-0.01, 0.06, 1.04) forwards;
   z-index: 1;
+}
+/* End Article preview transitions */
+
+.pub-preview-intro-speak {
+  display: flex;
+  max-height: 0px;
+}
+
+.pub-preview-intro-speak.open {
+  max-height: 600px;
+}
+
+.pub-preview-intro-speak .ppis-message {
+  max-width: 260px;
+  padding: 10px;
+  line-height: 20px;
+
+  /* Animations */
+  will-change: transform;
+  transition: transform .6s cubic-bezier(0.67, 0.52, 0.61, 1.54);
+  transform: scale(0);
+}
+
+.pub-preview-intro-speak .ppis-message.pointer {
+  transform: scale(1);
+}
+
+.ppis-message .ppis-conversation {
+  background-color: rgb(217, 217, 217);
+  padding: 6px;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.ppis-prompt {
+  display: flex;
+}
+
+.ppis-prompt .ppis-prompt-opt {
+  background-color: rgb(238, 238, 238);
+  margin: 2px 8px;
+  padding: 2px 0;
+  border-radius: 6px;
+}
+
+.ppis-message.field {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.ppis-message.field input {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(177, 177, 177);
+  font-size: 18px;
+}
+
+.ppis-message.field input:focus-visible {
+  outline: unset;
+}
+
+.ppis-message.field .button-prompt-send-message {
+  background-color: rgb(92, 164, 253);
+  margin: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
 }
 
 /* Animations */
