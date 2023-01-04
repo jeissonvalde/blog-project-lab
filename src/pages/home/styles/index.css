@@ -96,7 +96,8 @@
   justify-content: center;
   position: absolute;
   z-index: 1;
-  display: flex;
+  /* display: flex; */
+  display: none;
   
   /* Animations */
   transform-origin: right;
@@ -141,8 +142,8 @@
   transform: translateX(-120%);
   color: #f2ca00;
   animation-name: pubPreviewIntroText;
-  animation-duration: 10s;
-  animation-delay: calc(var(--jdx) * 2.5s);
+  animation-duration: 9s;
+  animation-delay: calc(var(--jdx) * 1.8s);
   animation-direction: normal;
   animation-fill-mode: forwards;
   animation-play-state: paused;
@@ -186,11 +187,13 @@
 .bring-the-picture-here {
   animation: bringHere 6.4s cubic-bezier(0.51,-0.01, 0.06, 1.04) forwards;
   z-index: 2;
+  display: flex !important;
 }
 
 .take-away-photography {
   animation: takeaway 6.4s cubic-bezier(0.51,-0.01, 0.06, 1.04) forwards;
   z-index: 1;
+  display: flex !important;
 }
 /* End Article preview transitions */
 

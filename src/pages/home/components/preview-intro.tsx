@@ -19,10 +19,13 @@ export function PreviewIntro (props: any) {
 
       <div className="pub-preview-intro-introduction">
         {blg.introduction.map((intr: any, jdx: number) => {
+          let textStyle = {
+            "--jdx": jdx + 1
+          } as any
 
           return (
             <div key={jdx} className="paragraph-line">
-              <span>{intr}</span>
+              <span style={textStyle}>{intr}</span>
             </div>
           )
         })}

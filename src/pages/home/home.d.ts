@@ -1,3 +1,8 @@
+declare global {
+  interface Window {
+    mainInterval: any
+  }
+}
 
 export interface BlogInterface {
   title: string,

@@ -41,6 +41,7 @@ export function presentation (this: any, blogList: []) {
           let imgPointer = document.getElementById('img-preview-' + pointer?.getAttribute('id'))
           imgPointer?.classList.remove('bring-the-picture-here')
           imgPointer?.classList.add('take-away-photography')
+          setTimeout(() => imgPointer?.classList.remove('take-away-photography'), 6500)
 
           // Bring here
           next?.classList.add('pointer')
@@ -52,8 +53,9 @@ export function presentation (this: any, blogList: []) {
           setTimeout(() => imgPointer?.classList.remove('take-away-photography'), 7000)
         }
       } else { console.log('No está la lista de titulares.') }
-    }, 8000) as any // End interval
+    }, 30000) as any // End interval
     
+    window.mainInterval = interv
     this.setState({
       mainInterval: interv
     })
@@ -63,6 +65,7 @@ export function presentation (this: any, blogList: []) {
 // opt: { callback }
 export function stopPresentation (this: any, opts: any) {
   clearInterval(this.state.mainInterval)
+  clearInterval(window.mainInterval)
 
   let headlineListElem = document.getElementById('home-headline-list'),
     headlineItems = headlineListElem?.getElementsByTagName('li') as HTMLCollectionOf<HTMLElement>,
