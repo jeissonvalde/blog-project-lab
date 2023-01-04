@@ -2,12 +2,18 @@ import blogsData from "../../../assets/blogs"
 import React, { useState, Component } from 'react'
 let imgStatistics = 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Ficons%2Fstatistics-64.png?alt=media&token=a861ab54-98cb-400b-bcec-2ab8a74a58c5'
 
+/*
+  The item list pointer can be managed from the title list, located at the top left. 
+  Selecting a title brings up each article submission with "bring-the-picture-here" css. 
+  After a moment it is removed with "take-away-photography" css.
+
+  Selecting a title to preview disables automatic viewing.
+*/
 export function presentation (this: any, blogList: []) {
   // let This = this as any
   setTimeout(() => {
 
     let interv = setInterval(() => {
-      console.log('interv')
       let headlineListElem = document.getElementById('home-headline-list')
 
       if (headlineListElem) {
