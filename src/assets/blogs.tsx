@@ -4,17 +4,24 @@ export default [
     url: 'vuelta-san-juan-2023',
     id: 'A9S8AJAS0IAM-AS98AS',
     introduction: [
-      'La competencia de ciclismo se ha convertido ',
-      'en uno de los deportes más emocionantes ',
-      'en latinoamérica'
+      "La competencia de ciclismo se ha convertido ",
+      "en uno de los deportes más emocionantes ",
+      "en latinoamérica"
     ],
     messages: [
       {
         // Para cookies [recomendaciones]
-        text: '¿Verá el campeonato de ciclismo en su hogar o se encontrará de vacaciones?',
-        pront: [
-          { label: 'En el hogar', data: 'home, movies, ' },
-          { label: 'Estoy de vacaciones', data: 'home' },
+        message: '¿Verá el campeonato de ciclismo en su hogar o se encontrará de vacaciones?',
+        prompt: [
+          { label: 'En el hogar', data: 'home' },
+          { label: 'Estoy de vacaciones', data: 'holidays' },
+        ]
+      },
+      {
+        message: '¿Te gusta este deporte?',
+        prompt: [
+          { label: 'lo vemos en familia', data: 'family' },
+          { label: 'prefiero otro deporte', data: 'no' },
         ]
       },
     ],
