@@ -4,8 +4,8 @@ export default [
     url: 'vuelta-san-juan-2023',
     id: 'A9S8AJAS0IAM-AS98AS',
     introduction: [
-      "La competencia de ciclismo se ha convertido ",
-      "en uno de los deportes más emocionantes ",
+      "La competencia de ciclismo es ",
+      "uno de los deportes más importantes ",
       "en latinoamérica"
     ],
     messages: [
