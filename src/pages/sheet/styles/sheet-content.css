@@ -10,8 +10,9 @@
 }
 
 .sheet-content article {
-  backdrop-filter: blur(4px);
-  background-color: rgba(255, 255, 255, 0.566);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.452);
   max-width: 500px;
   margin: auto;
   padding: 10px;
@@ -28,7 +29,12 @@
   transition: color 1s, opacity 1s, max-height .4s;
   transition-delay: 4.8s, 4s, 0s;
   color: transparent;
-  opacity: 0
+  opacity: 0;
+}
+
+.sheet-content article.open {
+  color: rgb(20, 20, 20);
+  opacity: 1;
 }
 
 .sheet-content article.minimize {

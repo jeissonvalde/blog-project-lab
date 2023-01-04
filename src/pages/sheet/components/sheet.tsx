@@ -9,12 +9,12 @@ function Sheet (props: {
   meta: {}[],
   images: {}[],
   createdBy: {},
-}) {
+} | {}) {
   
   return (
     <section className="sheet-wrap">
       <SheetHeader />
-      <SheetContent {...props} />
+      <SheetContent />
     </section>
   )
 }

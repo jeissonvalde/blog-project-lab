@@ -14,11 +14,11 @@ function imagesInterval (props: {}) {
 
 function Background (props: {
   imageURL: string
-}) {
+} | {}) {
 
   return (
-    <div className="sheet-background-image">
-      <img onLoad={handleOnLoad} src={props.imageURL} alt="imagen de fondo" />
+    <div className="sheet-background-image loading">
+      <div className="sbi-images"></div>
     </div>
   )
 }
