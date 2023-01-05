@@ -4,6 +4,10 @@ import Sheet from './pages/sheet'
 // Res
 import images from './assets/images.json'
 
+/**
+ * No end paths with a slash (/) except home page.
+ */
+
 export default [
   {
     index: true,
@@ -18,7 +22,7 @@ export default [
   },
   {
     Container: Sheet,
-    path: 'article/',
+    path: 'article',
     label: 'Publicación',
     icon: {
         tag: 'img',

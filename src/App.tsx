@@ -1,28 +1,32 @@
 import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
 import routes from './routes';
 import BarNavigation from './components/bar-navigation';
+import { navigateTo } from './components/bar-navigation/controllers';
 import './styles/App.css';
 
 function App() {
+  const [ currentPath, setCurrentPath ] = useState({ path: '/' })
 
   // Navigation
   let barNavData = {
-    routes
-  }
+    routes,
+    setCurrentPath
+  };
 
+  const navigate = navigateTo.bind({ props: { setCurrentPath }})
+  
   return (
     <div className="App">
-      <Routes>
-        {routes.map((r: any, idx) => {
+      {routes.map((r: any, idx) => {
 
-          return <Route key={idx} {...r} element={<r.Container />} />;
-        })}
+        if (r.path == currentPath.path) {
+          return <r.Container navigate={navigate} key={idx} />;
+        }
+      })}
 
-      </Routes>
-      <BarNavigation {...barNavData} />
+      <BarNavigation  {...barNavData} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -17,11 +17,9 @@ class Publication extends React.Component<{}, PublicationInterface> {
 
   render() {
     
-    console.log('Article (sheet) before or state null')
-
+    console.log('Se renderea Sheet.tsx')
     if (this.state.article == null) return <div>Article</div>
 
-    console.log('Article (sheet)')
     return (
       <div className="Article page hide">
         <Sheet

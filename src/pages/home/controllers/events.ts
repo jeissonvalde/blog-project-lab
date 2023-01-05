@@ -1,9 +1,9 @@
 import {
   BlogInterface
-} from '../home'
+} from '../home';
 import {
   navigateTo
-} from '../../../components/bar-navigation/controllers'
+} from '../../../components/bar-navigation/controllers';
 import { useNavigate } from 'react-router-dom';
 
 // Click article preview: navigate to Article page.
@@ -17,14 +17,9 @@ export function clickArticlePreview (this: any, blog: BlogInterface, e: any) {
     setTimeout(() => {
       pageHome.classList.add('hide')
       pageHome.classList.remove('hide-transition-fade-out')
+
+      this.props.navigate({ path: routePath, label: 'Artículo' })
     }, 2000)
   }
-  if (pageArticle) {
-    pageArticle.classList.remove('hide')
-    pageArticle.classList.add('hide-transition-fade-in')
-    // Stop home articles animation
-    window.clearInterval(window.mainInterval)
-
-    navigateTo({ path: routePath, label: 'Artículo' })
-  }
+  window.clearInterval(window.mainInterval)
 }
