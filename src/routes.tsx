@@ -6,7 +6,9 @@ import images from './assets/images.json'
 
 export default [
   {
+    index: true,
     Container: Home,
+    path: '/',
     label: 'Inicio',
     icon: {
         tag: 'img',
@@ -16,6 +18,7 @@ export default [
   },
   {
     Container: Sheet,
+    path: 'article/',
     label: 'Publicación',
     icon: {
         tag: 'img',
@@ -23,4 +26,4 @@ export default [
         alt: 'publication image'
     }
   },
-]
+];

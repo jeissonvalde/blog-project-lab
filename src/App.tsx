@@ -1,26 +1,25 @@
-import { useState } from 'react'
-import routes from './routes'
-import BarNavigation from './components/bar-navigation'
-import './styles/App.css'
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import routes from './routes';
+import BarNavigation from './components/bar-navigation';
+import './styles/App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   // Navigation
   let barNavData = {
     routes
   }
 
-
   return (
     <div className="App">
-      {routes.map((r, idx) => {
+      <Routes>
+        {routes.map((r: any, idx) => {
 
-        return (
-          <r.Container key={idx} />
-        )
-      })}
+          return <Route key={idx} {...r} element={<r.Container />} />;
+        })}
 
+      </Routes>
       <BarNavigation {...barNavData} />
     </div>
   )
