@@ -9,12 +9,14 @@ import {
   selectLi,
 } from './controllers/animations'
 import {
-  clickLiArticle,
   clickArticlePreview
 } from './controllers/events'
 import {
   loadImage
 } from './controllers/image'
+import {
+  RedirectFunction
+} from 'react-router-dom'
 import './styles/index.css'
 
 // Global props
@@ -37,7 +39,7 @@ class Home extends React.Component {
   initPresentation = presentation.bind(this)
   stopPresentation = stopPresentation.bind(this)
   selectLi = selectLi.bind(this)
-  selectPreview = selectLi.bind(this)
+  selectPreview = clickArticlePreview.bind(this)
   // articleIntroElem = articleIntroElem.bind(this)
 
   render() {
@@ -78,11 +80,16 @@ class Home extends React.Component {
                 <div
                   key={idx}
                   id={prevId}
-                  onClick={this.selectPreview.bind(null, blg)}
                   className={`article-image ${idx == 0 ? 'bring-the-picture-here' : ''}`}>
+                  <div
+                    onClick={this.selectPreview.bind(null, blg)}
+                    className="button-go-to-article" data-id-article={blg.id}>
+                  </div>
 
                   <div className="article-image-effect">
-                    <PreviewIntro blg={blg} />
+                    <PreviewIntro
+                      handleClickPreviewArticle={this.selectPreview.bind(null, blg)}
+                      blg={blg} />
                   </div>
 
                   <a className="author external-link" target="_blank" href={blg.bgImageAuthor}>Autor <img src={imgLinkBlank} /></a>

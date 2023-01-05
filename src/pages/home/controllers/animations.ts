@@ -1,6 +1,5 @@
 import blogsData from "../../../assets/blogs"
 import React, { useState, Component } from 'react'
-let imgStatistics = 'https://firebasestorage.googleapis.com/v0/b/tech-website-59d72.appspot.com/o/images%2Ficons%2Fstatistics-64.png?alt=media&token=a861ab54-98cb-400b-bcec-2ab8a74a58c5'
 
 /*
   The item list pointer can be managed from the title list, located at the top left. 
@@ -15,6 +14,7 @@ export function presentation (this: any, blogList: []) {
 
     let interv = setInterval(() => {
       let headlineListElem = document.getElementById('home-headline-list')
+      console.log('Animar')
 
       if (headlineListElem) {
         let headlineItems = headlineListElem.getElementsByTagName('li') as HTMLCollectionOf<HTMLElement>,
@@ -54,7 +54,7 @@ export function presentation (this: any, blogList: []) {
         }
       } else { console.log('No está la lista de titulares.') }
     }, 30000) as any // End interval
-    
+
     window.mainInterval = interv
     this.setState({
       mainInterval: interv

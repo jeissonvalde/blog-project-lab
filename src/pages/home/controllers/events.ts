@@ -1,20 +1,31 @@
 import {
-  BlogInterface,
-  BgImageInterface
+  BlogInterface
 } from '../home'
 
 // Click article preview: navigate to Article page.
-export function clickArticlePreview (blog: BlogInterface, blogsInterval: any, e: any) {
+export function clickArticlePreview (this: any, blog: BlogInterface, e: any) {
   let pageHome = document.getElementsByClassName('Home')[0] as HTMLElement,
     pageArticle = document.getElementsByClassName('Article')[0] as HTMLElement
 
+  // Change state
+  this.setState({ redirect: `/article?id=${blog.id}` })  
+  window.Article = blog
 
-  if (pageHome) pageHome.classList.add('hide')
+  if (pageHome) {
+    pageHome.classList.add('hide-transition-fade-out')
+    setTimeout(() => {
+      pageHome.classList.add('hide')
+      pageHome.classList.remove('hide-transition-fade-out')
+    }, 2000)
+  }
   if (pageArticle) {
     pageArticle.classList.remove('hide')
+    pageArticle.classList.add('hide-transition-fade-in')
     // Stop home articles animation
-    blogsInterval.killInterval()
+    clearInterval(this.state.mainInterval)
+    clearInterval(window.mainInterval)
 
+    /*
     let articleTitleElem = pageArticle.querySelector('.article-title span') as HTMLElement
     articleTitleElem.innerHTML = blog.title
 
@@ -42,30 +53,6 @@ export function clickArticlePreview (blog: BlogInterface, blogsInterval: any, e:
 
         articleBackgroundImages?.append(imageElem)
       }
-    }
+    } */
   }
-}
-
-export function clickLiArticle (liId: string, blogsInterval: any, e: any) {
-  let liElem = document.querySelector(`li#${liId}`) as HTMLElement,
-    prevImgElem = document.getElementById('img-preview-' + liId) as HTMLElement
-
-  // Stop home articles animation
-  blogsInterval.killInterval()
-
-  blogsInterval.selectLi(liElem, prevImgElem)
-}
-
-function loadBgImage (e: any) {
-  let articleBackgroundImages = document.querySelector('.sheet-background-image') as HTMLElement,
-    img = e.target,
-    imgW = img.offsetWidth,
-    imgH = img.offsetHeight
-
-  if (imgW > imgH) img.classList.add('full-height')
-  if (imgW < imgH) img.classList.add('full-width')
-
-  setTimeout(() => {
-    articleBackgroundImages.classList.remove('loading')
-  }, 1000)
 }

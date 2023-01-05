@@ -5,6 +5,7 @@ export function PreviewIntro (props: any) {
   let {
     blg,
     current,
+    handleClickPreviewArticle,
   } = props
 
   if (!blg.introduction || !blg.introduction[0]) return (
@@ -25,7 +26,9 @@ export function PreviewIntro (props: any) {
 
           return (
             <div key={jdx} className="paragraph-line">
-              <span style={textStyle}>{intr}</span>
+              <span
+                onClick={handleClickPreviewArticle}
+                style={textStyle}>{intr}</span>
             </div>
           )
         })}

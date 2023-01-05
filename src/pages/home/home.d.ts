@@ -1,6 +1,7 @@
 declare global {
   interface Window {
-    mainInterval: any
+    mainInterval: any,
+    Article: any
   }
 }
 
