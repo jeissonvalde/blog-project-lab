@@ -1,0 +1,18 @@
+
+
+- Change AppRoutes.tsx
+- App.tsx -> idx: number
+- home/ -> Home
+- shared/controllers/set-event not found
+- remove import { RedirectFunction } Home/index.tsx
+
+
+- Home/index.tsx > "./controllers/animations" exports imports
+- Home/index.tsx > "./controllers/events" exports imports
+- Home/index.tsx > "./controllers/events" ClickArticlePreview
+- Home/index.tsx > "./controllers/image" loadImage
+- Home/index.tsx > "./controllers/image" only casing.
+- Home/index.tsx > RedirectFunction
+
+
+- Home/controllers/events.ts > ../home.d.ts Hay dos interfaces del mismo nombre.

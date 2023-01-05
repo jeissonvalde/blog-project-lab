@@ -17,7 +17,7 @@ function App() {
   
   return (
     <div className="App">
-      {routes.map((r: any, idx) => {
+      {routes.map((r: any, idx: number) => {
 
         if (r.path == currentPath.path) {
           return <r.Container navigate={navigate} currentPath={currentPath} key={idx} />;
