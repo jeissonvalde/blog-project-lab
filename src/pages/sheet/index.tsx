@@ -15,15 +15,13 @@ class Publication extends React.Component<{}, PublicationInterface> {
     }
   }
 
-  componentDidMount(): void {
-    this.setState({ article: window.Article })
-  }
-
   render() {
-    console.log(this.state);
     
-    if (this.state.article == null) return ''
+    console.log('Article (sheet) before or state null')
 
+    if (this.state.article == null) return <div>Article</div>
+
+    console.log('Article (sheet)')
     return (
       <div className="Article page hide">
         <Sheet
