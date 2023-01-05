@@ -1,26 +1,32 @@
-import React from 'react'
-import { createPortal } from 'react-dom'
-import { ReactPropTypes } from 'react'
-import controllers from './controllers'
-import "./bar-nav.css"
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { Navigate } from 'react-router-dom';
+import controllers from './controllers';
+import "./bar-nav.css";
 
 interface BarNav {
-  routes: any[]
-}
-
+  routes: any[],
+  redirect: null | string
+};
 
 class BarNavigation extends React.Component<{}, BarNav> {
   constructor(props: any) {
     super(props)
 
     this.state = {
-      routes: props.routes
+      routes: props.routes,
+      redirect: null,
     }
   }
 
+  clickLink = controllers.navigateTo.bind(this)
 
   render() {
     let routes = this.state.routes
+
+    if (this.state.redirect != null) {
+      return <Navigate to={this.state.redirect} />;
+    }
 
     return createPortal(
       <div className="bar-navigation">
@@ -30,7 +36,7 @@ class BarNavigation extends React.Component<{}, BarNav> {
             return (
               <li
                 key={idx}
-                onClick={controllers.clickLiNavigation.bind(null, r)}>
+                onClick={this.clickLink.bind(null, r)}>
                   
                 <img src={r.icon.value} alt={r.icon.alt} /> 
                 {r.label}
@@ -40,6 +46,6 @@ class BarNavigation extends React.Component<{}, BarNav> {
         </ul>
       </div>, document.getElementById('navigation-container') as HTMLElement)
   }
-}
+};
 
-export default BarNavigation
+export default BarNavigation;
