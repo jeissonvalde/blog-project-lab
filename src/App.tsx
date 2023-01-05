@@ -5,7 +5,7 @@ import { navigateTo } from './components/bar-navigation/controllers';
 import './styles/App.css';
 
 function App() {
-  const [ currentPath, setCurrentPath ] = useState({ path: '/' })
+  const [ currentPath, setCurrentPath ] = useState({ path: '/', req: {} })
 
   // Navigation
   let barNavData = {
@@ -20,7 +20,7 @@ function App() {
       {routes.map((r: any, idx) => {
 
         if (r.path == currentPath.path) {
-          return <r.Container navigate={navigate} key={idx} />;
+          return <r.Container navigate={navigate} currentPath={currentPath} key={idx} />;
         }
       })}
 

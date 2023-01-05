@@ -10,5 +10,11 @@ export interface ArticleInterface {
 
 export interface PublicationInterface {
   article: any,
-  articleId: string | null
+  articleId: string | null,
+  currentPath: {
+    path: string,
+    req: {
+      body: any
+    }
+  }
 }

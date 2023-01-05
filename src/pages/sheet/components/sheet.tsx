@@ -5,11 +5,11 @@ import {
   ArticleInterface
 } from '../article'
 
-function Sheet (props: { articleData: ArticleInterface }) {
-  
+function Sheet (props: { articleData: ArticleInterface, clickGoBack: any }) {
+
   return (
     <section className="sheet-wrap">
-      <SheetHeader title={props.articleData.title} />
+      <SheetHeader clickGoBack={props.clickGoBack} title={props.articleData.title} />
       <SheetContent {...props} />
     </section>
   )

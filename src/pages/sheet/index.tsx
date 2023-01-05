@@ -1,9 +1,12 @@
 import React from 'react'
-import Sheet from './components/sheet'
+import Sheet from './components/sheet';
 import {
   PublicationInterface
-} from './article'
-import './styles/index.css'
+} from './article';
+import {
+  clickGoBack
+} from './controllers/header';
+import './styles/index.css';
 
 class Publication extends React.Component<{}, PublicationInterface> {
   constructor(props: any) {
@@ -12,21 +15,42 @@ class Publication extends React.Component<{}, PublicationInterface> {
     this.state = {
       article: null,
       articleId: null,
+      currentPath: props.currentPath
     }
   }
 
-  render() {
-    
-    console.log('Se renderea Sheet.tsx')
-    if (this.state.article == null) return <div>Article</div>
+  componentDidMount(): void {
+    // this.getArticleById(this.state.currentPath.req.body.id);
+    this.setState({ article: window.Article });
+    document.querySelector('.Article')?.classList.remove('hide')
+  }
 
+  // Handlers
+  clickGoBack = clickGoBack.bind(this)
+  getArticleById(id: string) {
+    console.log('id', id)
+    let Container = this;
+
+    const response = fetch('weatherforecast')
+      .then(res => {
+        console.log()
+      });
+
+    console.log('weatherforecast', response)
+  }
+
+  render() {
+
+    if (this.state.article == null) return ''
+    
     return (
-      <div className="Article page hide">
+      <div className="Article page">
         <Sheet
+          clickGoBack={this.clickGoBack}
           articleData={this.state.article}/>
       </div>
     )
   }
-}
+};
 
-export default Publication
+export default Publication;
