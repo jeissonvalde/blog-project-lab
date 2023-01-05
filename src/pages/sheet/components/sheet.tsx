@@ -1,20 +1,16 @@
 import React from 'react'
 import SheetHeader from './header'
 import SheetContent from './content'
+import {
+  ArticleInterface
+} from '../article'
 
-function Sheet (props: {
-  title: string,
-  content: string,
-  bgImage: string,
-  meta: {}[],
-  images: {}[],
-  createdBy: {},
-} | {}) {
+function Sheet (props: { articleData: ArticleInterface }) {
   
   return (
     <section className="sheet-wrap">
-      <SheetHeader />
-      <SheetContent />
+      <SheetHeader title={props.articleData.title} />
+      <SheetContent {...props} />
     </section>
   )
 }

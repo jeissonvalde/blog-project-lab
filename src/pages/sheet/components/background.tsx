@@ -1,24 +1,48 @@
+import {
+  ArticleInterface
+} from '../article'
 
-function handleOnLoad (e:any) {
-  e.target.style.opacity = '1'
-  e.target.style.transform = 'scale(1) translateX(0px)'
+function loadBgImage (e: any) {
+  let articleBackgroundImages = document.querySelector('.sheet-background-image') as HTMLElement,
+    img = e.target,
+    imgW = img.offsetWidth,
+    imgH = img.offsetHeight
 
-  let article = document.querySelector('.sheet-content article') as HTMLElement
-  article.style.color = 'black'
-  article.style.opacity = '1'
+  if (imgW > imgH) img.classList.add('full-height')
+  if (imgW < imgH) img.classList.add('full-width')
+
+  setTimeout(() => {
+    articleBackgroundImages.classList.remove('loading')
+  }, 1000)
 }
 
-function imagesInterval (props: {}) {
-  
-}
-
-function Background (props: {
-  imageURL: string
-} | {}) {
+function Background (props: { articleData: ArticleInterface }) {
+  let articleData = props.articleData
 
   return (
     <div className="sheet-background-image loading">
-      <div className="sbi-images"></div>
+      <div className="sbi-images">
+
+        {articleData.images.map((image: any, idx: number) => {
+          let styleImage = {} as any
+          styleImage["--idx"] = idx
+
+          if ((idx % 2) == 0) { // Even
+            styleImage["--direction"] = '200'
+          } else {
+            styleImage["--direction"] = '-200'
+          }
+
+          return (
+            <img
+              src={image.src}
+              style={styleImage}
+              data-index={idx}
+              onLoad={loadBgImage}
+              alt={image.alt || 'imagen de ' + articleData.title}/>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -42,12 +42,57 @@
 
 .page {
   display: block;
+  margin: auto;
+
+  /* Animations */
+  will-change: opacity, max-height, max-width;
+  max-width: 3000px;
+  max-height: 3000px;
+  animation-name: none;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 .page.hide {
   display: none !important;
 }
 
+.page.hide-transition-fade-out {
+  animation-name: fadeOutAnim;
+  animation-play-state: running;
+  overflow: hidden;
+}
+
+.page.hide-transition-fade-in {
+  animation-name: fadeOutAnim;
+  animation-direction: reverse;
+  animation-play-state: running;
+}
+
 .no-display {
   display: none;
+}
+
+@keyframes fadeOutAnim {
+  0% {
+    opacity: 1;
+    max-width: 3000px;
+    max-height: 3000px;
+  }
+  16% {
+    opacity: 0;
+    max-width: 3000px;
+    max-height: 3000px;
+  }
+  90% {
+    opacity: 0;
+    max-width: 0px;
+    max-height: 0px;
+  }
+  100% {
+    opacity: 0;
+    max-width: 0px;
+    max-height: 0px;
+  }
 }

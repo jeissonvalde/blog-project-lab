@@ -1,21 +1,33 @@
 import React from 'react'
 import Sheet from './components/sheet'
-import blogs from '../../assets/blogs'
+import {
+  PublicationInterface
+} from './article'
 import './styles/index.css'
 
-declare global {
-  interface Window {
-    currentArticle: any
-  }
-}
+class Publication extends React.Component<{}, PublicationInterface> {
+  constructor(props: any) {
+    super(props)
 
-class Publication extends React.Component {
+    this.state = {
+      article: null,
+      articleId: null,
+    }
+  }
+
+  componentDidMount(): void {
+    this.setState({ article: window.Article })
+  }
 
   render() {
+    console.log(this.state);
+    
+    if (this.state.article == null) return ''
 
     return (
       <div className="Article page hide">
-        <Sheet {...{}} />
+        <Sheet
+          articleData={this.state.article}/>
       </div>
     )
   }

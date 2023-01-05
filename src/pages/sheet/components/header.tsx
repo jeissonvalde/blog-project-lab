@@ -4,7 +4,8 @@ import {
 } from "../controllers/header"
 import images from "../../../assets/images.json"
 
-function Header (props: {}) {
+function Header (props: { title: string }) {
+  let articleData = window.Article
 
   return (
     <header>
@@ -13,7 +14,7 @@ function Header (props: {}) {
       </div>
 
       <div className="article-title">
-        <span></span>
+        <span>{articleData.title}</span>
       </div>
     </header>
   )
